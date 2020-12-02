@@ -9,6 +9,8 @@
 #           i) Ordinal column encodings using Thermometer encoding
 #              The coding is similar to OneHotEncoding
 #
+# Note: There  are two ways to code. Both are below.
+
 
 # 1.0 Call libraries
 from sklearn.base import TransformerMixin
@@ -108,9 +110,16 @@ s.toarray()
 # Another way
 ##################
 
+# 7.0 Call libraries
+from sklearn.base import TransformerMixin
+import numpy as np
+import scipy
+
+
+# 7.1
 class ThermometerEncoder(TransformerMixin):
     """
-    Assumes all values are known at fit
+    Assume on NaN value
     """
     def __init__(self, sort_dict):
         self.sort_dict = sort_dict
@@ -125,40 +134,37 @@ class ThermometerEncoder(TransformerMixin):
         result = scipy.sparse.coo_matrix(np.arange(length) < np.array(self.val_).reshape(-1, 1)).astype(int)
         return result
 
-
+# 7.2
 ordinal_columns = ['x1','x4']
 thermos = []
 for i in ordinal_columns:
     if i == ordinal_columns[0]:
-        # Create a function to use in sorted
-        #   Arrange the list in the order
-        #    ordinal-values increasing importance
         sort_dict = {'small': 0, 'middle' : 1, 'large' : 2}
     elif i == ordinal_columns[1]:
         sort_dict = { 'a' : 0, 'b' : 1 , 'c': 2,'d': 3 }
     else:
          raise ValueError(i)
-    #sort_key = list(set(df[i])).index
     enc = ThermometerEncoder(sort_dict)
     X = enc.fit_transform(df[i])
     thermos.append(X)
 
 
-# 4.2
+# 7.3
 type(thermos[0])    # scipy.sparse.coo.coo_matrix
-# 4.3 Check
+# 7.4 Check
 thermos[0].toarray()
 thermos[1].toarray()
 
-# 5.0 Transform the rest of columns to sparse matrix
+# 7.5 Transform the rest of columns to sparse matrix
 #     coo_matrix: COOrdinate sparse matrix
 rest_columns = ['x2', 'x3']
 t = scipy.sparse.coo_matrix(df[rest_columns])
 t = list([t])
 t[0].toarray()
 
-# 6.0 Stack transformed-ordinals and remaining columns
+# 7.6 Stack transformed-ordinals and remaining columns
 s = scipy.sparse.hstack( t + thermos ).tocsr()
-# 6.1 Result
+# 7.7 Result
 s.toarray()
 df
+#######################################
