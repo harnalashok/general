@@ -1,4 +1,4 @@
-# Last amended: 4th Dec, 2020
+# Last amended: 19th Dec, 2020
 # Myfolder: C:\Users\Administrator\OneDrive\Documents\useful_code & utilities\utilities
 # Ref:
 # StackOverflow: https://stackoverflow.com/a/49081131/3282777
@@ -17,7 +17,13 @@
 
 # 1.0 Call libraries
 %reset -f
-# 1.1 Inherit following classes
+# 1.1 Inherit a Mixin class and a base class
+#     What are Mixin classes?
+#     Read about them here:
+#         https://www.residentmar.io/2019/07/07/python-mixins.html
+#     And here, on StackOverflow
+#
+#        https://stackoverflow.com/q/533631/3282777
 from sklearn.base import TransformerMixin, BaseEstimator
 # 1.2
 import numpy as np
@@ -30,30 +36,42 @@ from scipy.sparse import hstack
 #     Must return a numpy array or a DataFrame
 #     and NOT any other object, say, a list
 
+#     BaseEstimator brings with it two methods:
+#     get_params() and set_params()
+
+#     It is an example of Multiple Inheritance
 class ThermometerEncoder(TransformerMixin, BaseEstimator):
     """
-    Assume no NaN value
+    Assumes no NaN value
 
     """
+    # sort_dict is a dictionary of dictionaries
     def __init__(self, sort_dict):
         self.sort_dict = sort_dict
-
 
     # 2.1 All computation should occur in fit, and if fit
     #     needs to store the result of a computation, it should
     #      do so in an attribute with a trailing underscore (_).
     #       Ref: https://dbader.org/blog/meaning-of-underscores-in-python
     def fit(self, X, y=None):
+        # We do not collect any statistics from X
+        # No learning from X.
+        #  Should also return the object itself
         return self
 
     # 2.2 Transform method
     def transform(self, X, y=None):
         thermos = []
         for i in X.columns:
+            # For every ordinal column
+            #  (sort_dict.keys())
             if i in self.sort_dict.keys():
                 # 2.3 See explantions below, line-by-line
+                # Get the dictionary for the Ist ord column
                 col_dict_ = self.sort_dict[i]
+                # Perform mapping to X[i] values
                 val_ = X[i].map(col_dict_)
+                # Howm many are unique levels
                 length_ = len(set(val_))
                 result_ = scipy.sparse.coo_matrix(np.arange(length_) < np.array(val_).reshape(-1, 1)).astype(int)
                 thermos.append(result_)
@@ -90,17 +108,22 @@ levels_map = {
 # 4.1
 # Create an instance of ThermometerEncoder
 enc = ThermometerEncoder(levels_map)
-# 4.1.1 fit() it
+
+# 4.2 Remove BaseEstimator class from ThermometerEncoder
+#     arguments and check if the following method is available?
+#     IT IS NOT.
+enc.get_params()
+# 4.2.1 fit() it
 enc.fit(df)
-# 4.1.2 transform() data now
+# 4.2.2 transform() data now
 out = enc.transform(df)
 out
-# 4.1.3
+# 4.2.3
 out = enc.fit_transform(df)
 
-# 4.2
+# 4.3
 type(out)    # scipy.sparse.coo.coo_matrix
-# 4.3 sparse-to-dense
+# 4.4 sparse-to-dense
 out.toarray()
 
 #  Check
@@ -152,7 +175,8 @@ X = df
 X['x1']
 
 # 8.1
-col_dict_ = {'small': 0, 'middle' : 1, 'large' : 2}
+col_dict_ = {'small': 0, 'large' : 2, 'middle' : 1 }
+
 # 8.2
 val_ = X['x1'].map(col_dict_)
 val_
@@ -163,7 +187,9 @@ length_     # 3
 # 8.4
 np.arange(length_)
 np.array(val_).reshape(-1,1)
-np.arange(length_) == np.array(val_).reshape(-1,1)
+scipy.sparse.coo_matrix((np.arange(length_) < np.array(val_).reshape(-1,1)).astype(int))
+
+
 np.array([0,1,2])  < np.array([[0],[1],[2]])
 (np.array([0,1,2])  < np.array([[0],[1],[2]])).astype(int)
 
