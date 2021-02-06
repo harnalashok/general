@@ -1,0 +1,91 @@
+Last amended: 6th Feb, 2021
+--------------------------------
+# Ref: https://www.kaggle.com/python10pm/learn-numpy-the-hard-way-70-exercises-solutions
+#      https://www.kaggle.com/python10pm/learn-numpy-the-hard-way-70-exercises-solutions
+
+Perform the following numpy exercises. You may use ipython IDE
+for the purpose. Write your answers after each question
+creating space as needed. Submit your results on Moodle.
+
+1.   Create a numpy array from the following list of numbers:
+	     [2,7,2,90]
+
+2.  Create a numpy array from the following list of lists:
+	     [[2,7,2,90] , [23,4,56,7,65,34]]
+
+3.  Create a numpy array from following tuple:
+	     (4,7,12,90,34)
+
+4.  Create a numpy array from keys of following dictionary:
+	     t = {'a' : 23, 'b' :78}
+
+5.  Create a numpy array of random numbers with shape (6,10)
+	  Name this array, say 'abc'
+
+6. In the array of problem (v), determine:
+
+	a. Its shape
+	b. Its dimensions
+	c. Its data-type (dtype)
+	d. Its maximum element value
+	e. Its minimum element value
+	f. Divide every element of array by 10
+	g. Slice the array from 2nd column to 5th
+	h. Slice the array from 2nd column to 5th and
+	   from 3rd row to 5th row.
+	i. Round every value in the array to two decimal points
+	j. Create another random array of shape(6,10) and add
+	   the two arrays
+	k. Reshape the array to shape (3,20)
+	l. Can you reshape the array of (3,19)? If not why not?
+	m) Extract from array 2nd, 4th and 5th columns
+	n) Extract from array 2nd, 4th and 5th rows
+	n) Calculate row-wise mean
+	o) Calculate column-wise median
+	p) Calculate mean of all values
+	q) Assign a constant value of 8
+	   to all elements in column 6
+	   and rows 4 and 5.
+	r) Alter arrays datatype (dtype) to float32
+
+7. Create a numpy array of shape (2,4) full of zeros
+8. Create a numpy array of shape (2,4) full of 1s
+9. Transpose array ('abc' ) created in problem (5)
+10.  Create two arrays from the following two-lists:
+
+		list1:  [2,3,6,7,8]
+		list2:  [3,3,5,7,7]
+
+    Check in the two arrays which elements are equal.
+
+11. Create a numpy array from the following list:
+	  	[[2,3,np.nan,4,5,6], [7,8,9,np.nan,10,11], [np.nan, np.nan,np.nan, 3,4,5]]
+
+    Then check how many elements are nan or NULL. (hint: use np.isnan(), np.sum())
+
+12. Create an array from following list and check which elements are equal to 0
+				list1:  [0,0,4,0,9,8]              (hint: use np.where() or np.nonzero())
+
+13. Normalize the numpy array with maximum of respective column:
+        np.array([[2,4,10], [20,400,800]])
+
+
+14. How to get the positions where elements of arrays, a and b match?
+
+			a = np.array([[1,2,3], [3,4,5]])
+			b = np.array([[10,2,30],[3,40,5]])
+
+15 Extract all numbers between 6.0 to 6.6 from below numpy array?
+
+			z = np.random.normal(loc = 5.7, scale = 3, size = (6,3))
+
+
+16. Swap two columns of numpy array (z) in the above problem
+
+17. Swap two rows of numpy array (z) in the problem 15.
+
+18. Create a 2D array containing random floats between 5 and 10?
+
+19. Print only 3 decimal places in python numpy array z of problem 15.
+
+############################
