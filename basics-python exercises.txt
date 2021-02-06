@@ -1,0 +1,91 @@
+# Last amended: 6th Feb, 2021
+# Myfolder: /home/ashok/Documents/1.basic_lessons/exercises
+# Ref:  https://www.techbeamers.com/python-programming-questions-list-tuple-dictionary/
+
+
+###################################################
+# Attempt following questions.                     #
+# You can take help of your friends		   #
+# But, if you do so, DO NOT COPY BLINDLY	   #
+####################################################
+
+#### Lists
+# Q-1. Create a list of any ten random numbers
+# Q-2. From the list in Q-1:
+	i)		Get its length
+	ii)		Find its minimum element
+	iii)	Find its maximum element
+	iv)		Sum up all its elements
+	v)		Extract first three elements from this list
+	vi)		Extract elements from 3rd to 6th.
+	vii)	Use list comprehension to extract 2nd and 5th elements
+	viii)	Assign a value of 900 to elements 2nd and 5th using list
+	     	comprehension
+	ix)   Get index of any number from within the list
+	 x)		Delete only the number at index 4
+	xi)		Append following list in the above list, thus
+	     	create a list of lists:
+					[800, 78, 900, 20]
+	xii)	Extend the existing list with above numbers
+
+
+# Q-3 Add 8 to each element in the following list:
+			[7,5,6,89]
+
+# Q-4 Sort the following list in increasing order:
+			[10,90,87, 5,900]
+
+# Q-5 Sort the above list in decreasing order
+
+# Q-6 Use the list in Q2, to create another list
+      which contains every IInd element of the list.
+
+# Q-7 In the list of Q2, start from 2nd element,
+      and extract every IInd element upto 8th element.
+
+#### Tuples
+
+# Q-8 Transform the list of Q-2 into a tuple using function tuple()
+
+# Q-9 On the tuple of Q8, perform the following:
+					a. Try to assign value of 8 to 6th element
+					b. Multiply every value in the tuple by 2
+	   				 and create a list (Use list comprehension)
+
+# Q-10 Create the following tuple:
+			(2,10,5, 60,9,80)
+
+			Multiply every element that is greater than 5 by 2 and create another list
+			(hint: Use list comprehension.)
+
+Q-11 Take the following two tuples:
+			j = (2,3,4)
+			k = (12,13,14)
+
+		 Use zip() in list comprehension to multiply
+     the two tuples-Ist element of one by Ist element of other
+     IInd element of one by IInd element of other and so on..
+
+
+#### Dictionary
+
+Q-12 Create the following dictionary:
+
+	d = { 'a' : 56, 'b' : 90, 'c' : 80 }
+
+		a. Get a list of its keys
+		b. Get a list of its values
+
+Q-13 Create the following dictionary:
+			d = { 'a' : [56,89,23], 'b' : 90, 'c' : 80 }
+
+     Write a function to multiply all elements of the
+     list associated with key 'a'.
+
+Q-14 Write a lambda function to raise a number to the power of 8
+
+Q-15 Write a lambda function to evaluate the following:
+			x^9 + sqrt(x)    [hint: sqrt: x ** 0.5]
+
+
+##############################################################################
