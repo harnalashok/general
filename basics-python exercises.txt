@@ -87,5 +87,56 @@ Q-14 Write a lambda function to raise a number to the power of 8
 Q-15 Write a lambda function to evaluate the following:
 			x^9 + sqrt(x)    [hint: sqrt: x ** 0.5]
 
+Q-16 Try the following lambda expressions:
+
+			(lambda x, y, z: x + y + z)(1, 2, 3)
+			(lambda x, y, z=3: x + y + z)(1, 2)
+			(lambda x, y, z=3: x + y + z)(1, y=2)
+
+			(lambda *args: sum(args))(1,2,3)
+			(lambda **kwargs: sum(kwargs.values()))(one=1, two=2, three=3)
+
+# (To understand *args and **kwargs, refer:
+#  Ref: https://realpython.com/python-kwargs-and-args/
+# )
+
+#### for loop and if-else
+
+Q-16 Write a for loop to print a range of numbers
+     from 20 to 30
+
+Q-17 Write a for loop to count how many time 'a'
+		 occurs in the word: 'DataCamp'
+
+Q-18 Go over the following list and add 4 to
+     each integer.
+
+		 [1,2,"ashok", "define", 7]
+
+Q-19 Consider the following list of numbers:
+	  		 	[10,20,30,40]
+		 Use 'enumerate()'' to print this list as:
+		 				0  10
+						1  20
+						2  30
+						3  40
+Q-20 Write the following code to understand
+     how map() can be used to replace
+		 for-loops.
+
+		x = [20, 30, 40, 50, 60]
+    y = map(lambda x: x*5, x)
+    y
+    list(y)
+    Output: [100, 150, 200, 250, 300]
+
+		(References:
+		For map,
+		Ref: https://realpython.com/python-map-function/
+		For lambda:
+		Ref: https://realpython.com/python-lambda/
+		)
+
+Q-21
 
 ##############################################################################
