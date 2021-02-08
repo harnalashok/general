@@ -1,0 +1,24 @@
+Last amended: 19th April, 2020
+Exercises on GroupBy
+====================
+
+Please find below Big Mart Sales dataset. Read this dataset
+in Pandas and answer the following seven simple questions:
+
+1. Group the dataset based on the Outlet_Location_Type using GroupBy
+    and count of different outlet location types.
+
+2. Use agg() function on these groups and perform several statistical
+   computations (mean, std, var etc) on all data at once!
+
+3. Group data by 'Outlet_Location_Type' and 'Outlet_Establishment_Year'
+   and summarise Item_Outlet_Sales by mean and std
+
+4. Get mean Item MRPs by Item_Fat_Content
+
+5. Get average sales by Outlet_Establishment_year.
+
+6. Get average item_visibility and total outlet sales by outlet_type and outlet_location_type
+
+7. For whole dataframe, find average visibility.
+=========================================
