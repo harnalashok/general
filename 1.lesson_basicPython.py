@@ -98,42 +98,42 @@ https://docs.python.org/3/tutorial/datastructures.html
 '''
 
 
-# 2.1 Lists
+# L1.0 Lists
 numbers=[1,2,5]
 numbers[2]               # Indexing starts from 0
 numbers[2] = 89          # List value is reassigned
 
 
-# 2.2 Useless list
+# L1.1 Useless list
 ul = [ 1, "abc", 23.34, 2, "abc"]
 type(ul)
 
 
 
-# 2.3 List of methods that apply to list
+# L1.2 List of methods that apply to list
 dir(numbers)	           # numbers.__sizeof__()
 
 numbers.__add__(numbers)   # Used by extend() method
 numbers.extend(numbers)    #  internally
 
 
-# 2.4 Append a number or list to list
-#     Append acts to create 'stacks' of lists
-#     Append can append an integer or a list
+# L1.3 Append a number or list to list
+#      Append acts to create 'stacks' of lists
+#      Append can append an integer or a list
 ex=[2,9]
 numbers.append(ex)         # Append a list
 numbers.append(10)        # Append an integer
 numbers
 
-# 2.4.1 Append will append any object
+# L1.3.1 Append will append any object
 #		to list
 
-# 2.4.1.1 Append a dictionary
+# L1.3.1.1 Append a dictionary
 sk = {"k" : 4}
 numbers.append(sk)
 numbers
 
-# 2.4.1.2 Append a function:
+# L1.3.1.2 Append a function:
 
 def abc(d):
 	return d * d
@@ -141,7 +141,7 @@ def abc(d):
 numbers.append(abc)
 numbers
 
-# 2.4.2 Note the difference between
+# L1.4 Note the difference between
 #         append() and extend():
 
 ex = [2,9]
@@ -150,7 +150,7 @@ numbers.append(ex)
 numbers
 
 
-# 2.4.2  'extend' merges a list with a list
+# L1.4.1  'extend' merges a list with a list
 #        extend() cannot merge an integer with a list
 numbers= [6,7,8]
 ex = [2,9]
@@ -158,13 +158,13 @@ numbers = [6,7,8]
 numbers.extend(ex)
 numbers
 
-# 2.4.3 This fails
+# L1.4.2 This fails
 numbers.extend(10)
 
-# 2.4.4 This succeeds
+# L1.4.3 This succeeds
 numbers.extend([10])
 
-# 2.4.5 This also succeeds:
+# L1.4.4 This also succeeds:
 #       As number appends any object
 #       and 10 is an object:
 
@@ -172,23 +172,23 @@ numbers.append(10)
 numbers
 
 
-# 3.0 Popping out from list. Last in first out
+# L2.0 Popping out from list. Last in first out
 
 numbers.pop()
 numbers
 
 
-# 3.1 Deleting any list item in between:
+# L2.1 Deleting any list item in between:
 
 gef = list(range(3,21,2))
 gef
 
-# 3.2 What is the index of value 13
+# L2.2 What is the index of value 13
 gef.index(13)
 gef.pop(5)
 gef
 
-# 3.2.1  del vs pop
+# L2.2.1  del vs pop
 
 del(gef[5])     # This also works
 gef.pop(2:4)    # This does not work
@@ -196,7 +196,7 @@ del(gef[2:4])   # This works
 gef.pop()       # This works but
                 #   there is no equivalence with del
 
-# 3.2.2  Using .remove() without getting its index:
+# L2.2.2  Using .remove() without getting its index:
 
 gef = [2,13,2,3,13]
 gef
@@ -204,15 +204,15 @@ gef.remove(13)
 gef
 
 
-# 4.0 Iterate over contents of list
-#     For iterator vs iterable
-#     Ref: https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration
+# L3.0 Iterate over contents of list
+#      For iterator vs iterable
+#      Ref: https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration
 
 for num in numbers:             # s =numbers__iter__() ; list(s)
 	print(num)
 
 
-# 4.1 Or as here
+# L3.1 Or as here
 result = 0
 for i in range(100):           # range(5) is an iterable just as list is
     result += i
@@ -220,7 +220,7 @@ for i in range(100):           # range(5) is an iterable just as list is
 result
 
 
-# 4.2 Single line for loop
+# L3.2 Single line for loop
 #      Enclosed in square brackets
 #       chr(97) is 'a'
 #     List comprehension
@@ -234,12 +234,12 @@ for x in range(10, 20):
 
 squares
 
-# 4.3  List comprehension
+# L3.3  List comprehension
 squares = [x * x for x in range(10, 20)]
 squares
 
 
-# 4.4
+# L3.4
 k = [1,2,3,4,4]
 squares = [(i,x * x) for i,x in enumerate(k)]
 squares
@@ -248,12 +248,12 @@ squares
 squares = [{i,x * x} for i,x in enumerate(k)]
 squares
 
-# 4.5
+# L3.5
 x=[chr(i) for i in range(97,100) ]
 x
 
 
-# 4.6  Heterogeneous lists
+# L3.6  Heterogeneous lists
 #        But this flexibility comes at a cost: to allow
 #         these flexible types, each item in the list must
 #          contain its own type info, reference count, and other
@@ -268,7 +268,7 @@ for item in L3:
     print(type(item))
 
 
-# 4.7 Delete a list
+# L3.7 Delete a list
 n = [1,2,3]
 del n[:]  	   # Delete only list-elements
 n              # n is an empty list
@@ -276,13 +276,32 @@ del n          # n is deleted
 n
 
 
-# 5. Mutating lists
+# L4. Mutating lists
 #    What works and what fails
 l = list(range(10))
 l
 l[3] = 10000       # This works
 l[2:4] = 10000     # This fails
 l[2:4] = [10000] * len(l[2:4])    # This is OK
+
+
+####
+# L5. Functions operating on lists
+####
+# enumerate():   returns an enumerate object for the list.
+#                It gives the list items with their indices.
+                 list(enumerate([2,10,300]))
+# len()          returns the length of the list.
+# filter()      filter() takes a function and filters
+#               a sequence by checking each item.
+    list(filter(lambda val:val%2==0, [1,2,3,4,5,6,7,8,9]))
+# all()         Returns True if all elements in the list are True
+#                or if the list is empty
+                all([1,2,3,False])
+# any()         returns True if at least one element in the list is True
+                any([1,2,3,False])
+# max(), min(), sorted()                
+
 
 
 
@@ -297,19 +316,19 @@ values inside parentheses ().
 '''
 
 
-# 5
+# t1
 t=(3,4,6,8)
 t[1]
 t[1] = 6	# Gives error
 
 
-# 5.1
+# t1.1
 a = 1,7     # This is also a tuple
 type(a)
 
 
 
-# 5.2 zipping tuples
+# t1.2 zipping tuples
 
 t1 = (1,4,5,6)
 t2=("a","b","c","d")
@@ -323,10 +342,29 @@ for idx, x in zip(t1,t2):
     print(x)
 
 
-# 5.3 enumerate returns position of an element and also element
+# t1.3 enumerate returns position of an element and also element
 for idx, x in enumerate(zip(t1,t2)):
 	print(idx)
 	print(x)
+
+
+
+####
+# t2. Functions operating on tuples
+####
+# enumerate():   returns an enumerate object for the tuple.
+#                It gives the list items with their indices.
+                 tuple(enumerate((2,10,300)))
+# len()          returns the length of the tuple.
+# filter()      filter() takes a function and filters
+#               a sequence by checking each item.
+    list(filter(lambda val:val%2==0, (1,2,3,4,5,6,7,8,9)))
+# all()         Returns True if all elements in the tuple are True
+#                or if the tuple is empty
+                all((1,2,3,False))
+# any()         returns True if at least one element in the tuple is True
+                any((1,2,3,False))
+# max(), min(), sorted()
 
 
 
