@@ -1,0 +1,59 @@
+# Last amended: 21st July, 2023
+# Ref: https://docs.docker.com/engine/reference/commandline/builder/
+# kdnuggets: https://www.kdnuggets.com/2023/07/docker-tutorial-data-scientists.html 
+
+
+## Docker version
+	docker -v
+
+
+## List
+# List all running containers
+	sudo docker ps
+	sudo docker container ls
+
+# List all containers:
+	sudo docker ps -a
+	sudo docker container ls --all
+
+# List docker images:
+	sudo docker images
+	sudo docker image ls
+
+# List --help for any command:
+	sudo docker ps --help
+	sudo docker container --help
+	sudo docker compose --help
+	
+
+# Start/Stop container:
+	sudo docker start container-id 	Restarts a stopped container
+	sudo docker stop container-id 	Stops a running container
+
+# Pull/run image 
+	sudo docker pull image-name 		Pulls image-name from DockerHub by default
+	sudo docker run image-name 		Starts a container from an image
+
+# Build an image from dockerfile.yml
+	docker build path 		Builds an image at the path using instructions in the Dockerfile
+
+## Delete
+# Remove multiple containers: 
+	sudo docker container rm webserver laughing_kowalevski relaxed_sammet
+
+
+# Delete all stopped containers and dangling images:
+	sudo docker system prune
+
+# Remove any stopped containers and all unused images (not just dangling images):
+    sudo docker system prune -a
+
+## System size
+# Give container/images size information:
+	sudo docker system df
+	sudo docker system df --verbose
+	
+## Rename container:
+	sudo docker container rename old_CONTAINER NEW_NAME
+
+
